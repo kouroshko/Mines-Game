@@ -1,12 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import BoxesScreen from './screens/boxesScreen';
+import BoxesRender from './components/boxesRender';
+import BetSetter from './components/betSetter';
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar style='light' />
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="BetSetter" screenOptions={{
+          headerTitle: 'Bet Amount',
+          headerStyle: {
+            backgroundColor: '#2e2d2d',
+          },
+          headerTitleStyle: {
+            color: 'white'
+          },
+          headerBackTitleStyle: {
+            color: '#fff',
+          },
+
+        }}>
+          <Stack.Screen name="BetSetter" component={BetSetter} />
+          <Stack.Screen name="BoxesScreen" component={BoxesScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 
