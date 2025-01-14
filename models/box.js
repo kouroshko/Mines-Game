@@ -1,8 +1,7 @@
 class Box  {
-    constructor(id, isBomb, color) {
+    constructor(id, isBomb) {
         this.id = id;
-        this.isBomb = isBomb;
-        this.color = color;
+        this.isBomb = isBomb;   
     }
 
     setActive(status){
